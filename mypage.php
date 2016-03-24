@@ -17,15 +17,19 @@ foreach ($dbh->query($sql) as $row) {
 <div class="container" style="padding:10px 0">
   <h3>投稿一覧</h3>
 
-  <div class="col-lg-8 col-md-7 col-sm-6">
     <?php
     // 投稿が0件のユーザーに対するメッセージ
     if (empty($beans)){
+    ?>
+  <div class="col-lg-8 col-md-7 col-sm-6">
+    <?php
       echo "ユーザー登録が完了しました！</br>
       画面上にある[入力]ボタンから、飲んだコーヒーのメモを投稿して、お楽しみください！！";
-    }
+      ?>
+    </div>
+    <?php
+  };
     ?>
-  </div>
 
   <?php
   // 投稿があるユーザーの処理
@@ -41,43 +45,9 @@ foreach ($dbh->query($sql) as $row) {
         </a>
       </div>
   <?php endforeach; ?>
-
 </div>
 
-<!--
-<ul>
-  <?php foreach ($images as $image)  : ?>
-    <li>
-      <a href ="<?php echo SITE_URL. 'images/' .basename($image); ?>">
-        <img src ="<?php echo SITE_URL. $image; ?>">
-      </a>
-    </li>
-  <?php endforeach; ?>
-</ul>
--->
-
-<?php
-/* 画像一覧表示
-<?php if (isset($success)) : ?>
-  <div class="msg success"><?php echo $success; ?></div>
-<?php endif; ?>
-<?php if (isset($error)) : ?>
-  <div class="msg error"><?php echo $error; ?></div>
-<?php endif; ?>
-
-<ul>
-  <?php foreach ($images as $image)  : ?>
-    <li>
-      <a href ="<?php echo SITE_URL. 'images/' .basename($image); ?>">
-        <img src ="<?php echo SITE_URL. $image; ?>">
-      </a>
-    </li>
-  <?php endforeach; ?>
-</ul>
-*/
-?>
-
-
+<!-- 以下、使用できていないが、文字表示効果をつけるためのコード-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 $(function() {
