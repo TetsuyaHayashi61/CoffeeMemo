@@ -17,7 +17,19 @@ foreach ($dbh->query($sql) as $row) {
 <div class="container" style="padding:10px 0">
   <h3>投稿一覧</h3>
 
-    <?php foreach ($beans as $bean) : ?>
+  <div class="col-lg-8 col-md-7 col-sm-6">
+    <?php
+    // 投稿が0件のユーザーに対するメッセージ
+    if (empty($beans)){
+      echo "ユーザー登録が完了しました！</br>
+      画面上にある[入力]ボタンから、飲んだコーヒーのメモを投稿して、お楽しみください！！";
+    }
+    ?>
+  </div>
+
+  <?php
+  // 投稿があるユーザーの処理
+     foreach ($beans as $bean) : ?>
       <div class = "col-sm-3">
         <a href="memo.php?id=<?php echo $bean['id']; ?>">
           <img src="<?php echo SITE_URL.'/thumbs/'.h($bean['image_name']); ?>" alt="<?php echo h($bean['coffee_name']) ?>" class="img-responsive">

@@ -16,7 +16,6 @@
     $password2 = $_POST['password2'];
 
     $dbh = connectDb();
-
     $err = array();
 
     //名前が空？
@@ -60,7 +59,13 @@
                   ":password" => getSha1password($password)
       );
       $stmt->execute($params);
-      header('Location: '.SITE_URL.'mypage.php');
+
+      //セッションハイジャック対策
+      session_regenerate_id(true);
+      $_COOKIE['PHPSESSID'] = session_id();
+      $me = getUser($email, $password, $dbh);
+      $_SESSION['me'] = $me;
+      header('Location:'.SITE_URL.'mypage.php');
       exit;
     }
 

@@ -17,9 +17,7 @@ session_start();
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-
     $dbh = connectDb();
-
     $err = array();
 
     //メールアドレスが空？
@@ -27,7 +25,7 @@ session_start();
       $err['email'] = 'メールアドレスを入力してください。';
     }
 
-    //メールアドレスの形式が不正
+    //メールアドレスの形式が不正?
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
       $err['email'] = 'メールアドレスの形式が正しくありません。';
     }
